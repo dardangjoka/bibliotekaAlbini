@@ -1,0 +1,18 @@
+{
+  "name": "librari",
+  "version": "1.0.0",
+  "description": "Libraria Online",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^3.3.3",
+    "pug": "^3.0.2"
+  }
+}

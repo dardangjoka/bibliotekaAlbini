@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800 &family=Open+Sans:wght@300&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Cinzel', serif;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#headerii {
+    position: sticky !important;
+    top: 0 !important;
+    left: 0 !important;
+}
+
+.nav-link {
+    font-size: 14pt !important;
+    position: relative;
+    text-decoration: none;
+    color: #f3efef !important;
+    margin-right: 20px;
+}
+
+.nav-link::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #f1e8e8;
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover::before,
+.nav-link.active::before {
+    width: 100%;
+}
+
+.err {
+    font-size: 100pt !important;
+}
+
+
+li.list-group-item>a {
+    color: black !important;
+    text-decoration: none;
+}
+
+/*
+    te: profiliILibrit.pug
+    rr: 24 ;
+*/
+.tr {
+    border-radius: 10px !important;
+    padding: 0 50px !important;
+    margin: 50px 80px 80px !important;
+    display: flex !important;
+    overflow-x: scroll !important;
+    white-space: nowrap !important;
+    background-color: #fafafa !important;
+}
+
+.container {
+    overflow-x: auto;
+}
+
+.card {
+    white-space: normal;
+    min-width: 200px;
+}
+form input{
+    margin-right: 10px !important;
+}
+
+/*
+footer -style
+*/
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover{
+    color:lime;
+}

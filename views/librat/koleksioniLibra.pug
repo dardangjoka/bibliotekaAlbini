@@ -1,0 +1,25 @@
+include ../includes/navBar.pug
+    block content
+        section
+            .div(style="min-height:75%;").container-100
+                .row.m-0.d-flex.justify-content-center
+                    .col-xl-6.col-sm-12.justify-content-center.align-items-center.p-3.m-3
+                        table.table 
+                            thead.thead-dark
+                                tr
+                                    th Id
+                                    th Titulli 
+                                    th Autori 
+                                    th Zhanrri
+                            tbody
+                                each liber in librat
+                                    tr 
+                                        td= liber.id
+                                        td= liber.titulli 
+                                        td= liber.autori 
+                                        td= liber.zhanri
+                                        td 
+                                            button.btn.btn-secondary Lexo
+                                        td 
+                                            button.btn.btn-danger Shlyje
+    include ../includes/footer.pug

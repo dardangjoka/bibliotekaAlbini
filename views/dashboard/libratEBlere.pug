@@ -1,0 +1,22 @@
+block content
+    .container-100
+        .row.m-0.d-flex.justify-content-center
+            .col-xl-10.col-sm-12.justify-content-center.align-items-center.p-3.m-3
+                table.table.text-center
+                    thead.thead-dark
+                        tr
+                            th User
+                            th Titulli 
+                            th Autori 
+                            th Zhanrri
+                    tbody
+                        each liber in aaa1
+                            tr 
+                                td (Emri&Mbiemri)
+                                td= liber.titulli 
+                                td= liber.autori 
+                                td= liber.zhanri
+                                td 
+                                    button.btn.btn-secondary Faktura
+                                td 
+                                    button.btn.btn-danger Anulo Blerjen

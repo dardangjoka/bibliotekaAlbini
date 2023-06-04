@@ -1,0 +1,61 @@
+block content
+    footer.footer-48201(style='margin-top: -24px').bg-dark.text-white
+        .container
+            .row.p-5
+                .col-md-4.pr-md-5.logo-responsive-upper
+                    a.footer-site-logo.d-block.mb-4(href='/')
+                        img(src="/img/library.jpg", height="50px", width="50px", alt="My Website Logo", style="border-radius: 50%" )
+                    p
+                    | The customer is at the heart of our unique business model, which
+                    | includes design.
+                .col-md
+                    ul.list-unstyled.nav-links
+                        li
+                            a(href='/') Home
+                        li
+                            a(href='/about') About Us
+                        li
+                            a(href='/contact') Contact
+                        li(v-if='!user.loggedIn')
+                            a(href='/login') Login
+                        li(v-if='!user.loggedIn')
+                            a(href='/login') Register
+                        li(v-if="user.loggedIn && user.data.email.includes('admin')")
+                            a(href='/dashboard') Dashboard
+                .col-md
+                    ul.list-unstyled.nav-links
+                        li
+                            a(href='#') Team
+                        li
+                            a(href='#') Return &amp; Exchanges
+                        li
+                            a(href='#') Payment Methods
+                .col-md
+                    ul.list-unstyled.nav-links
+                        li
+                            a(href='#') Privacy Policy
+                        li
+                            a(href='#') Terms &amp; Conditions
+                        li
+                            a(href='#') Partners
+                .col-md.text-md-center.logo-responsive
+                    ul.social.list-unstyled
+                        li
+                            a(href='#')
+                                span.fa.fa-facebook
+                        li
+                            a(href='#')
+                                span.icon-twitter
+                        li
+                            a(href='#')
+                                span.icon-twitter
+                        li
+                            a(href='#')
+                                span.icon-facebook
+                    p
+                        a.btn.btn-success(href='/contact') Contact Us
+            .row
+                .col-12.text-center
+                    .copyright.mt-5.pt-5
+                        p
+                            small &copy; 2022-2023 All Rights

@@ -1,0 +1,34 @@
+include ../includes/navBar.pug
+    block head 
+        link(rel='stylesheet', href='/css/navBar.css')
+    block content
+        section
+            .container
+                .row.mt-5
+                    .col-5.d-flex.justify-content-end
+                        - const width=300
+                        img(src=libri.img , width=(width),height=(width*1.6))
+                    .col-7.justify-content-right
+                        h1= libri.titulli
+                        p Autori: #[span= libri.autori]
+                        p Zhanri: #[span Zhanri i librit]
+                        p Pershkrimi: #[span Pershkrimi i librit]
+                        p ISBN: #[span ISBN i librit]
+                        p Viti i botimit #[span Viti i botimit te librit]
+                        a.btn.btn-primary.m-1(href="/book-collection/"+libri.id) Buy
+                        button.btn.btn-warning.m-1 PreeView
+                        
+        section#sygjerimet.justify-content-center.align-items-center
+            .container
+                .col-12.mt-5
+                    h2.text-center.pt-5 Libra Te Tjer
+                .col-10.d-flex.tr
+                        - const width2=(100)
+                        - const librrrr=[{id:1, titulli:"Beni ", autori:"Fan Noli", img:"/img/img1.jpg", zhanri:"femij"},{id:2, titulli:"Beni nashm", autori:"Fan Noli", img:"/img/img1.jpg", zhanri:"femij"},{id:3, titulli:"Beni mem", autori:"Fan Noli", img:"/img/img1.jpg", zhanri:"komedi"},{id:4, titulli:"Beni nuk ecen vetem", autori:"Fan Noli", img:"/img/img1.jpg", zhanri:"shkence"},{id:5, titulli:"Beni nuk eshte fukara", autori:"Fan Noli", img:"/img/img1.jpg", zhanri:"romantik"},{id:6, titulli:"Beni ecen vetem", autori:"Fan Noli", img:"/img/img1.jpg", zhanri:"romantik"},{id:1, titulli:"Beni ecen nuk vetem", autori:"Fan Noli", img:"/img/img1.jpg", zhanri:"femij"},{id:2, titulli:"Beni nashta ecen  vetem", autori:"Fan Noli", img:"/img/img1.jpg", zhanri:"femij"},{id:3, titulli:"Beni munde te ecen vetem", autori:"Fan Noli", img:"/img/img1.jpg", zhanri:"komedi"},{id:4, titulli:"Beni nuk ecen vetem", autori:"Fan Noli", img:"/img/img1.jpg", zhanri:"shkence"},{id:5, titulli:"Beni nuk eshte fukara", autori:"Fan Noli", img:"/img/img1.jpg", zhanri:"romantik"},{id:6, titulli:"Beni ecen vetem", autori:"Fan Noli", img:"/img/img1.jpg", zhanri:"romantik"},{id:1, titulli:"Beni ecen nuk vetem", autori:"Fan Noli", img:"/img/img1.jpg", zhanri:"femij"},{id:2, titulli:"Beni nashta ecen  vetem", autori:"Fan Noli", img:"/img/img1.jpg", zhanri:"femij"},{id:3, titulli:"Beni munde te ecen vetem", autori:"Fan Noli", img:"/img/img1.jpg", zhanri:"komedi"},{id:4, titulli:"Beni nuk ecen vetem", autori:"Fan Noli", img:"/img/img1.jpg", zhanri:"shkence"},{id:5, titulli:"Beni nuk eshte fukara", autori:"Fan Noli", img:"/img/img1.jpg", zhanri:"romantik"},{id:6, titulli:"Beni ecen vetem", autori:"Fan Noli", img:"/img/img1.jpg", zhanri:"romantik"}]
+                        each liber in librrrr
+                            .row-6.p-3
+                                a(href="/book-profile/"+liber.id)
+                                    img(src=liber.img, alt='Titulli i Librit', width=(width2+"px"), height=((width2*1.6)+"px"))
+                                h6= liber.titulli
+                                p= liber.autori
+    include ../includes/footer.pug

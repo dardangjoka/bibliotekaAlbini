@@ -1,0 +1,24 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Cinzel', serif;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.r{
+    margin: 9px !important;
+}
+
+.trrrrr{
+    display: flex !important;
+    overflow-x: scroll !important;
+    background-color: red;
+}
+
+
+@media only screen and (min-width: 1200px) {
+    select.form-select {
+      visibility: hidden !important;
+    }
+}
+  

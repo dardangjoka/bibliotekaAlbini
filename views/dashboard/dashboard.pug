@@ -1,0 +1,36 @@
+include ../includes/navBar.pug
+    block content
+        section
+            //array me Libra - test me pa qysh po doketn 
+            - const aaa1=[ {id:1, titulli:"Beni ecen nuk vetem", autori:"Fan Noli", img:"/img/img1.jpg", zhanri:"femij", pershkrimi:"asddddddddddd ddddddddddd dddc dddasddd ddddddddddddd dddddddd ddddddddd dddddd dddasddddddddddd ddddddddddd dddc dddasddd ddddddddddddd dddddddd ddddddddd dddddd dddasddddddddddd ddddddddddd dddc dddasddd ddddddddddddd dddddddd ddddddddd dddddd ddd"}, {id:2, titulli:"Beni nashta ecen  vetem", autori:"Fan Noli", img:"/img/img1.jpg", zhanri:"femij"},{id:3, titulli:"Beni munde te ecen vetem", autori:"Fan Noli", img:"/img/img1.jpg", zhanri:"komedi"},{id:4, titulli:"Beni nuk ecen vetem", autori:"Fan Noli", img:"/img/img1.jpg", zhanri:"shkence"},{id:5, titulli:"Beni nuk eshte fukara", autori:"Fan Noli", img:"/img/img1.jpg", zhanri:"romantik"},{id:6, titulli:"Beni ecen vetem", autori:"Fan Noli", img:"/img/img1.jpg", zhanri:"romantik"} ];
+            .container-100
+                .row.m-0
+                    .col-xl-2.col-sm-12.bg-dark.text-white.pt-5
+                        ul.list-group
+                            li.bg-dark.list-group-item
+                            a.text-decoration-none.text-white(href='#' onclick="showSection('crudiPerLibra')") Librat
+                            hr.text-white
+                            li.bg-dark.list-group-item
+                            a.text-decoration-none.text-white(href='#' onclick="showSection('libratEBlere')") Userat Qe Kan Ble Libra
+                            hr.text-white
+                    .col-xl-10.col-sm-12.col-md-11.text-center
+                        .section-container(id="crudiPerLibra" style="display: none;")
+                            include crudiPerLibra.pug
+
+                        .section-container(id="libratEBlere" style="display: none;")
+                            include libratEBlere.pug
+
+                        script.
+                            function showSection(section) {
+                                var crudiPerLibra = document.getElementById('crudiPerLibra');
+                                var libratEBlere = document.getElementById('libratEBlere');
+
+                                if (section === 'crudiPerLibra') {
+                                    crudiPerLibra.style.display = 'block';
+                                    libratEBlere.style.display = 'none';
+                                } else if (section === 'libratEBlere') {
+                                    crudiPerLibra.style.display = 'none';
+                                    libratEBlere.style.display = 'block';
+                                }
+                            }
+    include ../includes/footer.pug
