@@ -34,6 +34,29 @@ let readData=()=>{
     });
 }
 
-function buy(id){
-    console.log(id);
+function submitForm(){
+    let titulli = document.getElementById("titulli");
+    console.log(titulli.value)
 }
+
+function fshij(id){
+    fetch("http://localhost:3000/book-profile/"+id, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(response => {
+          if (response.ok) {
+           window.location.reload();
+          } else {
+            // Handle error case
+            console.error('Delete request failed');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+}
+
+

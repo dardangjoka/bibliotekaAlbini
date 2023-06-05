@@ -1,14 +1,17 @@
+const Librat = require("./models/libra");
+const libri = new Librat("titulli", 123, "autori", 123, "cmimi", "zhanri", "isVisible", "pdfLink", "imgId", "pershkrimi");
 
-const mysql = require('mysql2');
-const options = {
-    host: "localhost",
-    user: "albin",
-    database: "Libraria",
-    password: "Libraria123"
-}
-const pool = mysql.createPool(options);
+libri.getBook();
+// const mysql = require('mysql2');
+// const options = {
+//     host: "localhost",
+//     user: "albin",
+//     database: "Libraria",
+//     password: "Libraria123"
+// }
+// const pool = mysql.createPool(options);
 
-module.exports = pool;
+// module.exports = pool;
 
 // pool.getConnection((error, connection) => {
 //     if (error) {

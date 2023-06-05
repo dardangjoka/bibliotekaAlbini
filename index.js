@@ -17,7 +17,8 @@ const app=express();
 app.use(express.static(path.join(__dirname, 'public')));
 app.set("view engine", path.join(__dirname, "views"));
 app.set("view engine","pug");
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 //pathat kryesor
 app.use("/", homepage);
 app.use("/book-collection", bookCollection);
