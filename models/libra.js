@@ -38,7 +38,7 @@ class Librat{
     static async getAllBooks(){
         try{
             const [row, field] = await  conn.query(`
-            SELECT l.id, titulli, autori, i.linku, z.zhanri 
+            SELECT l.id, titulli, autori, i.linku, z.zhanri, l.is_visible
             FROM librat l
             join image i on l.image_id=i.id
             join zhanri z on l.zhanri=z.id;`)
