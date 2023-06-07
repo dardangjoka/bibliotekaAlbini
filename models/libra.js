@@ -21,8 +21,6 @@ class Librat{
             const query = 'INSERT INTO libraria.librat SET ?';
             const [results] = await conn.query(query, this);
             return results.insertId;
-       
-        
     }
 
     getBook(){
