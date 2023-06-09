@@ -17,7 +17,6 @@ class Librat{
 
 
     async createBook(){
-     
             const query = 'INSERT INTO libraria.librat SET ?';
             const [results] = await conn.query(query, this);
             return results.insertId;
@@ -28,7 +27,7 @@ class Librat{
     }
 
     static async deletaABook(id){
-    const query = 'DELETE FROM librat WHERE id = ?';
+    const query = 'DELETE  FROM librat WHERE id = ?';
     const [results] = await conn.query(query, [id]);
     return results.affectedRows;
     }
