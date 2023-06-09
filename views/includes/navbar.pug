@@ -18,11 +18,14 @@ html
                         span.navbar-toggler-icon
                     .collapse.navbar-collapse.justify-content-end#navbarNav
                         ul.navbar-nav
-                            - const navBarObjs=[{"/":" Home"}, {"/book-collection":"Koleksioni i Librave"},{"/about":"Rreth Nesh"},{"/dashboard":"Admin Paneli"}]
+                            - const navBarObjs=[{"/":" Home"}, {"/book-collection":"Koleksioni i Librave"},{"/about":"Rreth Nesh"}]
                             each navBarObj in navBarObjs 
                                 - for(let element in navBarObj)
                                     li.nav-item 
                                         a(aria-current="page", href=(element)).nav-link #{navBarObj[element]}
+                            if(isAuthenticated===true)        
+                                li.nav-item 
+                                    a(aria-current="page", href="/dashboard").nav-link Admin Paneli
                             li.nav-item.dropdown 
                                 a(role="button", data-bs-toggle="dropdown", aria-expanded="false").nav-link.dropdown-toggle#navbarDropdown
                                     img(src="img/profile.png", height="20px", width="20px", alt="Profile Logo", style="border-radius: 50%")
@@ -30,7 +33,11 @@ html
                                     li
                                         a(href="/user-profile").dropdown-item Profili 
                                     li
-                                        a(href="/signOut").dropdown-item Sign Out 
+                                        if(isAuthenticated===true)
+                                            form(action='/log-in/logout', method='POST')
+                                                button(type="submit").dropdown-item Sing out
+                                        else 
+                                            a(href="/log-in").dropdown-item Log In 
         block foot
             script(src='https://code.jquery.com/jquery-3.5.1.slim.min.js')
             script(src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js')

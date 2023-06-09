@@ -7,26 +7,27 @@ exports.getBookProfile =async (req, res)=>{
     const libriIFLitruar=libriIDerguar.filter(c=>{return c.id==id});
     const [libriIVetem]= libriIFLitruar;
     console.log(libriIVetem)
-    res.render("librat/profiliILibrit", {libri: libriIVetem, librrrr:libriIDerguar });
+    res.render("librat/profiliILibrit", {libri: libriIVetem, librrrr:libriIDerguar, isAuthenticated: req.session.isLoggedIn });
 }
 
 exports.deleteABook =async (req, res)=>{
     console.log(req.params.id);
     await Librat.deletaABook(req.params.id);
-    await res.render("dashboard/dashboard", {aaa1:  Librat.getAllBooks()});
+    await res.render("dashboard/dashboard", {aaa1:  Librat.getAllBooks(), isAuthenticated: req.session.isLoggedIn});
 }
 
 exports.getAllBooks = async (req, res)=>{
     const dbBooks = Librat.getAllBooks();    
     const zhanri = req.query;
+    console.log(req.session.isLoggedIn)
     let zhanriAktiv = "clear";
     if(!(Object.keys(zhanri).length === 0) && zhanri.zhanri!=="clear"){
         zhanriAktiv=zhanri.zhanri;
         const array = await Librat.getAllBooks();
         filterdBooks= array.filter((c)=>{ return zhanri.zhanri === c.zhanri;});
-        return res.render("librat/index",{titulliIfaqes:"Librat me zhaner: " + zhanri.zhanri, active: zhanriAktiv, librat:  await filterdBooks});
+        return res.render("librat/index",{titulliIfaqes:"Librat me zhaner: " + zhanri.zhanri, active: zhanriAktiv, librat:  await filterdBooks, isAuthenticated: req.session.isLoggedIn});
     }
-    res.render("librat/index",{titulliIfaqes:"Te gjitha librat", librat: await dbBooks, active: zhanriAktiv})
+    res.render("librat/index",{titulliIfaqes:"Te gjitha librat", librat: await dbBooks, active: zhanriAktiv, isAuthenticated: req.session.isLoggedIn})
 }
 
 exports.createBook = async (req, res)=>{
@@ -41,14 +42,14 @@ exports.createBook = async (req, res)=>{
     const pershkrimi = req.body.pershkrimi;
     const zhanri = req.body.zhanri;
     const libri = new Librat(titulli, parseInt(isbn), autori, parseInt(viti), parseFloat(cmimi), parseInt(zhanri), parseInt(isVisible), parseInt(pdfLink), parseInt(imgId), parseInt(pershkrimi));
-    
+
     try{
         await libri.createBook();
         const allBooks= await Librat.getAllBooks();
-        await res.render("dashboard/dashboard", {aaa1:  allBooks, errorActive: "none"});
+        await res.render("dashboard/dashboard", {aaa1:  allBooks, errorActive: "none", isAuthenticated: req.session.isLoggedIn });
     }catch(err){
         const allBooks= await Librat.getAllBooks();
-        await res.render("dashboard/dashboard", {aaa1:  allBooks, errorActive: "block", err:err});
+        await res.render("dashboard/dashboard", {aaa1:  allBooks, errorActive: "block", err:err, isAuthenticated: req.session.isLoggedIn});
     }
         
      
