@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `libraria` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `libraria`;
 -- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
 --
 -- Host: localhost    Database: libraria
@@ -66,7 +64,7 @@ CREATE TABLE `image` (
 
 LOCK TABLES `image` WRITE;
 /*!40000 ALTER TABLE `image` DISABLE KEYS */;
-INSERT INTO `image` VALUES (1,'link'),(2,'link'),(3,'link'),(4,'link'),(5,'link'),(6,'link'),(7,'link'),(8,'link'),(9,'link'),(10,'link'),(11,'link');
+INSERT INTO `image` VALUES (1,'/img/img1.jpg'),(2,'/img/img1.jpg'),(3,'/img/img1.jpg'),(4,'/img/img1.jpg'),(5,'/img/img1.jpg'),(6,'/img/img1.jpg'),(7,'/img/img1.jpg'),(8,'/img/img1.jpg'),(9,'/img/img1.jpg'),(10,'/img/img1.jpg'),(11,'/img/img1.jpg');
 /*!40000 ALTER TABLE `image` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,7 +84,7 @@ CREATE TABLE `koleksioni` (
   KEY `librat_id` (`librat_id`),
   CONSTRAINT `koleksioni_ibfk_1` FOREIGN KEY (`userat_id`) REFERENCES `userat` (`id`),
   CONSTRAINT `koleksioni_ibfk_2` FOREIGN KEY (`librat_id`) REFERENCES `librat` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,6 +93,7 @@ CREATE TABLE `koleksioni` (
 
 LOCK TABLES `koleksioni` WRITE;
 /*!40000 ALTER TABLE `koleksioni` DISABLE KEYS */;
+INSERT INTO `koleksioni` VALUES (2,1,35),(3,1,37),(4,1,37),(5,1,49),(6,1,37),(7,1,49),(8,7,37),(9,7,37),(10,7,49),(11,NULL,35),(12,1,38);
 /*!40000 ALTER TABLE `koleksioni` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -125,7 +124,7 @@ CREATE TABLE `librat` (
   CONSTRAINT `librat_ibfk_1` FOREIGN KEY (`zhanri`) REFERENCES `zhanri` (`id`),
   CONSTRAINT `librat_ibfk_2` FOREIGN KEY (`image_id`) REFERENCES `image` (`id`),
   CONSTRAINT `librat_ibfk_3` FOREIGN KEY (`pershkrimi_id`) REFERENCES `pershkrimi` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -134,7 +133,7 @@ CREATE TABLE `librat` (
 
 LOCK TABLES `librat` WRITE;
 /*!40000 ALTER TABLE `librat` DISABLE KEYS */;
-INSERT INTO `librat` VALUES (12,'Plaku dhe Deti',67890321,'Ernest Heminguej','1951',19.99,1,1,NULL,1,1),(13,'Vdekja Aniles',51685986,'Ibrahim Kadriu','2020',22.5,2,1,NULL,2,2),(14,'Fletorja Romance',802541,'Danielle Steel','1996',13.5,3,1,NULL,3,3),(15,'I dashur Xhon',8324516,'Nicholas Sparks','2006',15.99,3,1,NULL,4,4),(16,'Prilli i thyer',61310654,'Ismail Kadare','1978',33.99,2,1,NULL,5,5),(17,'Gjenerali i ushtrise se vdekur',173531,'Ismail Kadare','1963',9.99,4,1,NULL,6,6),(18,'Sikur te isha djale',49877530,'Haki Stermilli','1936',13.5,4,1,NULL,7,7),(19,'Histori e Skenderbeut',72499775,'Naim Frasheri','1898',13.99,5,1,NULL,8,8),(20,'Bageti e Bujqesi',10377816,'Naim Frasheri','1886',17.5,5,1,NULL,9,9),(21,'Shkëlqimi dhe rënia e shokut Zylo',38901802,'Dritero Agolli','1973',19.99,4,1,NULL,10,10),(22,'Komisari Memo',6970123,'Dritero Agolli','1967',15.59,4,1,NULL,11,11);
+INSERT INTO `librat` VALUES (35,'dasdasd',312312,'dasd','1231',1,1,1,'1',1,1),(37,'asdasd',12312,'dasda','1233',1,1,1,'11',1,1),(38,'dasd',1,'dasd','1',1,1,1,'1',1,1),(49,'hello',213124234,'dasd','1993',1,1,1,'1',1,1),(53,'Hello',123123,'asda','1994',1,1,1,'1',1,1);
 /*!40000 ALTER TABLE `librat` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -202,12 +201,13 @@ CREATE TABLE `userat` (
   `emrin` varchar(50) NOT NULL,
   `mbiemri` varchar(50) NOT NULL,
   `email` varchar(80) NOT NULL,
-  `passwordi` varchar(50) NOT NULL,
+  `passwordi` varchar(255) NOT NULL,
   `privilegji` varchar(50) DEFAULT NULL,
   `user_image` varchar(255) DEFAULT NULL,
   `bio` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -216,6 +216,7 @@ CREATE TABLE `userat` (
 
 LOCK TABLES `userat` WRITE;
 /*!40000 ALTER TABLE `userat` DISABLE KEYS */;
+INSERT INTO `userat` VALUES (1,'Albin','Abazi','dasda@ads.com','s2dasd','1','1',NULL),(7,'emriOsmani','Obama','dardan@kuqedra.com','12345678','2','/img/rr.jpg','dasdas'),(8,'dasdasdasd','asdasdasdasd','asdasd@sdas.casdadas','$2b$10$3btwvVRuZei5GjcXtnJQC.DiM6Q5c4g4Wc3XwPb.a..5wryyY1A3O',NULL,NULL,NULL),(17,'aaaaaaa','aaaaaaaa','aaaaaa@a.a','$2b$10$WySfDJZcTDjmMnrlPpCsKeHWp2cK9su2PeNZxO.v663udCmHdMbTe',NULL,NULL,NULL),(18,'bbbbbb','bbbbbb','b@b.b','$2b$10$3MTuAxugALJvULevfzgoxuZKggY0h7UzTUAkNDI.7F/TlpeCKui92','1',NULL,NULL),(19,'ccc','ccccccc','c@c.c','$2b$10$9UW1M92f6QHNqGBHQCl4Fehf3jDfp9HWjq.EZh9pDpw8fc8EqKV7m','2','/img/rr.jpg',NULL);
 /*!40000 ALTER TABLE `userat` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -252,4 +253,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-03 18:13:16
+-- Dump completed on 2023-06-10 12:46:08
