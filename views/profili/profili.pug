@@ -3,7 +3,7 @@ include ../includes/navBar.pug
         .container.section1.div
             .row.mt-5(style="min-height:55%; margin-top:105px !important; margin-bottom:55px !important;")
                 .col-xl-5.col-sm-12.text-center.imgmain
-                        img(src= user.img, width="250px", height="250px").rounded-circle.shadow-4-strong.img-thumnail
+                        img(src= user.user_image, width="250px", height="250px").rounded-circle.shadow-4-strong.img-thumnail
                         h1= user.emriIPerdoruesit
                 .col-xl-7.col-sm-12
                     .row
@@ -13,24 +13,24 @@ include ../includes/navBar.pug
                                     .col-xl-6.col-sm-11.m-1
                                         label(for="username") Emri
                                         .d-flex.align-items-center
-                                            input(type="text", placeholder="Emri", value=user.emri)#username.form-control
-                                            button.btn.btn-primary Edit
+                                            input(type="text", placeholder="Emri", value=user.emrin)#username.form-control
+                                          
                                     .col-xl-6.col-sm-11.m-1
                                         label(for="lastname") Mbiemri
                                         .d-flex.align-items-center
                                             input(type="text", placeholder="Mbiemri", value=user.mbiemri)#lastname.form-control
-                                            button.btn.btn-primary Edit
+                                            
                                 .row
                                     .col-xl-6.col-sm-11.m-1
                                         label(for="emailaddres") Email Adresa
                                         .d-flex.align-items-center
                                             input(type="email", placeholder="email-ketu", value=user.email)#emailaddres.form-control.mr-2
-                                            button.btn.btn-primary Edit
+                                          
                                     .col-xl-6.col-sm-11.m-1
-                                        label(for="pw") Email Adresa
+                                        label(for="pw") Passwordi
                                         .d-flex.align-items-center
-                                            input(type="password", placeholder="email-ketu", value=user.password)#pw.form-control
-                                            button.btn.btn-primary Edit
+                                            input(type="password", placeholder="password ketu", value=user.passwordi)#pw.form-control
+                                           
                                 .row
                                     .col-xl-6.col-sm-11.m-1
                                         label(for="bio") Bio

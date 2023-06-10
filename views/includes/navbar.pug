@@ -23,7 +23,7 @@ html
                                 - for(let element in navBarObj)
                                     li.nav-item 
                                         a(aria-current="page", href=(element)).nav-link #{navBarObj[element]}
-                            if(isAuthenticated===true)        
+                            if(isAuthenticated===true && privilege==2)        
                                 li.nav-item 
                                     a(aria-current="page", href="/dashboard").nav-link Admin Paneli
                             li.nav-item.dropdown 

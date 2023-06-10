@@ -1,15 +1,14 @@
 include ../includes/navBar.pug
     block content
-        - const adminat=[{foto: '/img/rr.jpg', emri: 'Filan', mbiemri: 'Fisteku', bio: 'property ensures  ensures that the cards have a minimum width and are not torty ensures that the cards have a minimum width and are not too small to read.'},{foto: '/img/rr.jpg', emri: 'Filan', mbiemri: 'Fisteku', bio: 'property ensures that the cards.'},{foto: '/img/rr.jpg', emri: 'Filan', mbiemri: 'Fisteku', bio: 'property ensures that the cards have a minimum width and arerty ensures that the cards have  too small to read.  property ensures d.'},{foto: '/img/rr.jpg', emri: 'Filan', mbiemri: 'Fisteku', bio: 'property ensures that the cards have a minimum width and are not too small to read. property ensures that the cards have a minimum width and are not too small to read.  property ensures that the cards have a minimum width and are not too small to read.'},{foto: '/img/rr.jpg', emri: 'Filan', mbiemri: 'Fisteku', bio: 'property ensures that the cards have a minimum width ano read.'}]
         .container.mt-5
             h2.text-center.mb-2.mt-5 Skuadra Jone
             .row.d-flex.flex-nowrap.mt-3.overflow-auto
                 each admin in adminat
                     .col-md-3.mt-4
                         .card
-                            img.card-img-top(src=admin.foto, alt='Photo')
+                            img.card-img-top(src=admin.user_image, alt='Photo')
                             .card-body
-                                h5.card-title= admin.emri + ' ' + admin.mbiemri
+                                h5.card-title= admin.emrin + ' ' + admin.mbiemri
                                 p.card-text= admin.bio
         .container.border.p-4.bg-light.mt-5(style='margin-bottom: 54px')
             .row.justify-content-center

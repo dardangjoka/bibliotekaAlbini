@@ -23,7 +23,7 @@ block content
                                 td(style="max-width:200px !important;")= liber.pershkrimi
                                 td= liber.vitiBotimit
                                 td 
-                                    button.btn.btn-secondary Edito
+                                    button.btn.btn-secondary(onclick="edito("+liber.id+")") Edito
                                 td 
                                     button#fshij.btn.btn-danger(onclick="fshij("+liber.id+")") Delete
                     br

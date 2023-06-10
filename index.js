@@ -11,6 +11,7 @@ const libratEBlere=require('./routes/libratEBlere');
 const about=require("./routes/about");
 const userProfile=require("./routes/userProfile");
 const logIn = require("./routes/login");
+const register = require('./routes/register');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 
@@ -32,6 +33,16 @@ app.use(
       saveUninitialized: false,
     })
   );
+app.use((req, res, next)=>{
+  if(!req.session.user){
+    req.session.user={
+      privilegji: "0"
+    }
+  }
+    
+  next();
+})
+app.use('/register', register);
 app.use("/log-in", logIn);
 app.use("/", homepage);
 app.use("/book-collection", bookCollection);

@@ -15,27 +15,23 @@ body
     .container.col-md-4.d-flex.align-items-center.justify-content-center.reg
       .col-md-6
         h2.text-center.mb-4 Register
-        form(action='login.html', method='post')
+        form(action='/register', method='post')
           .mb-3
             i.fas.fa-user
             label.form-label(for='name') Name
-            input#name.form-control(type='text', name='name', placeholder='Enter your name', required='', minlength='3')
+            input#name.form-control(type='text', name='name', placeholder='Enter your name', required, minlength='3')
           .mb-3
             i.fas.fa-user
-            label.form-label(for='username') Username
-            input#username.form-control(type='text', name='username', placeholder='Enter your username', required='', minlength='6')
+            label.form-label(for='username') LastName
+            input#username.form-control(type='text', name='lastname', placeholder='Enter your Last Name', required, minlength='6')
           .mb-3
             i.fas.fa-envelope
             label.form-label(for='email') Email
-            input#email.form-control(type='email', name='email', placeholder='Enter your email', required='')
+            input#email.form-control(type='email', name='email', placeholder='Enter your email', required)
           .mb-3
             i.fas.fa-key
             label.form-label(for='password') Password
-            input#password.form-control(type='password', name='password', placeholder='Enter your password', required='', minlength='6')
-          .mb-3
-            i.fas.fa-key
-            label.form-label(for='confirm-password') Confirm Password
-            input#confirm-password.form-control(type='password', name='confirm-password', placeholder='Confirm your password', required='', minlength='6')
+            input#password.form-control(type='password', name='password', placeholder='Enter your password', required, minlength='6')
           button.btn.bg-dark.text-white(type='submit') Register
           p.my-3.p
             | A member? 
