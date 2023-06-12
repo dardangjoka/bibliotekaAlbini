@@ -81,7 +81,7 @@ exports.updateAbook = async (req, res)=>{
     const zhaner= req.body.zhaner;
     const cmimi= req.body.cmimi;
     const pershkrimi = req.body.pershkrimi;
-    const bookArray= [id, titulli, autori, viti_botimit, cmimi,zhaner, pershkrimi];
+    const bookArray= [id, titulli, autori, viti_botimit, cmimi, zhaner, pershkrimi];
     
       Librat.updateBooks(bookArray).then(result=>{
         console.log(result);
