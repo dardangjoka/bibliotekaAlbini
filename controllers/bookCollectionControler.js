@@ -5,7 +5,7 @@ exports.getAllBookCollections= async (req, res)=>{
     const userId= req.session.user.id;
     const books= new BookCollection(userId);
     const bookCollection= await books.getBookCollection();
-    res.render("librat/koleksioniLibra",{titulliIfaqes:"Librat e: ", librat: bookCollection, active: true, isAuthenticated: req.session.isLoggedIn})
+    res.render("librat/koleksioniLibra",{titulliIfaqes:"Librat e: ", librat: bookCollection, active: true, isAuthenticated: req.session.isLoggedIn, privilege:req.session.user.privilegji})
 }
 
 exports.getABookToCollection = async (req, res)=>{
@@ -19,5 +19,10 @@ exports.getABookToCollection = async (req, res)=>{
     else{
      res.render('redirect',{message: "Duhesh me u kan logged in"});
     }
+    
+}
+
+exports.deleteABookCollection = async (req,res)=>{
+    const id=res.params.id
     
 }

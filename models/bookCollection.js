@@ -17,6 +17,12 @@ class BookCollection{
         const [results] = await conn.query(query, [this.userat_id, book_id]);
         return results.insertId;
     }
+
+    static async deletABookCollection(book_id){
+        const query = 'DELETE FROM koleksioni WHERE id = ?';
+        const [results] = await conn.query(query, [id]);
+        return results.affectedRows;
+    }
 }
 
 module.exports = BookCollection;

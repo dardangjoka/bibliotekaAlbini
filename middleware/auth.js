@@ -1,10 +1,8 @@
 exports.isAuth = async (req, res, next)=>{
-    if(req.session.isLoggedIn){
-        if(req.session.user.privilegji==="2"){
-            next();
-        }
+    console.log("perUserThjesht")
+    if(!req.session.isLoggedIn){
+        await res.render('redirect',{message: "Duhesh me u kan logged in"});
     }else{
-        await res.render('redirect',{message: "duhet te beni log in2"});
+        next();
     }
-    console.log("Error ")
 }

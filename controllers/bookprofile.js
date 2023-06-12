@@ -18,7 +18,7 @@ exports.deleteABook =async (req, res)=>{
         errori= err;
     }
    // await Librat.deletaABook(req.params.id);
-    await res.render("dashboard/dashboard", {aaa1:  Librat.getAllBooks(), isAuthenticated: req.session.isLoggedIn, err:errori});
+    await res.render("dashboard/crudiPerLibra", {aaa1:  Librat.getAllBooks(), isAuthenticated: req.session.isLoggedIn, err:errori});
 }
 
 exports.getAllBooks = async (req, res)=>{
