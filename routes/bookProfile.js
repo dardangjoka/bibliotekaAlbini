@@ -7,9 +7,9 @@ router.get("/", bookProfileModule.getAllBooks);
 
 router.get("/:id", bookProfileModule.getBookProfile);
 
-router.post("/", bookProfileModule.createBook);
+router.post("/", auth.isAuth, bookProfileModule.createBook);
 
-router.delete("/:id", bookProfileModule.deleteABook);
+router.delete("/:id",auth.isAuth, bookProfileModule.deleteABook);
 
 //router.get('libri/:id', bookProfileModule.getUpdateBookProfile)
 

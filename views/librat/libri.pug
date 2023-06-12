@@ -3,18 +3,40 @@ include ../includes/navBar.pug
         link(rel='stylesheet', href='/css/navBar.css')
     block content
         section
-            .container
-                .row.mt-5
-                    .col-5.d-flex.justify-content-end
-                        - const width=300
-                        form(action='/updatebook', method='PUT')
-                            input(type="text", name='tituli', value=libri.titulli)
-                            input(type="text", name='autori', value=libri.autori)
-                            input(type="text", name='zhanri', value=libri.zhanri)
-                            input(type="submit", value='Edito')
-
-
-                            
-
-
+            .container(style="border-radius: 20px; background-color :#e2e8f0; !important;").p-5.mt-5
+                .row
+                    h1= libri.titulli
+                .row.mt-5.mb-5.justify-content-center(style="background-color :#e2e8f0; !important")
+                    form(action='/crudiPerLibra/updatebook', method='POST')
+                        .col-xl-6.mt-4.mb-4
+                            h4.m-3.bg-light.p-4(style="border-radius: 5px;") ID 
+                                br
+                                input(type="text", name='idja', value=libri.id)
+                            h4.m-3.bg-light.p-4(style="border-radius: 5px;") Titulli 
+                                br
+                                input(type="text", name='titulli', value=libri.titulli)
+                            h4.m-3.bg-light.p-4(style="border-radius: 5px;") Autori 
+                                br
+                                input(type="text", name='autori', value=libri.autori)
+                            h4.m-3.bg-light.p-4(style="border-radius: 5px;") Zhanri 
+                                br
+                                select(name="zhanri")
+                                    option(value="1") Drame
+                                    option(value="2") Tragjedi
+                                    option(value="3") Romance
+                                    option(value="4") Roman
+                                    option(value="5") Poeme
+                            h4.m-3.bg-light.p-4(style="border-radius: 5px;") Cmimi 
+                                br
+                                input(type="text", name='cmimi', value=libri.cmimi)
+                            h4.m-3.bg-light.p-4(style="border-radius: 5px;") Viti i botimit 
+                                br
+                                input(type="text", name='viti_botimit', value=libri.viti_botimit)
+                            h4.m-3.bg-light.p-4(style="border-radius: 5px;") Pershkrimi 
+                                br
+                                p.small
+                                    textarea(name="pershkrimi", cols="40", rows="5")= libri.texti
+                            p.m-3.bg-light.p-3(style="border-radius: 5px;")
+                                input(type="submit", value='Edito').btn.btn-primary
+    
     include ../includes/footer.pug

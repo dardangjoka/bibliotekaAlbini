@@ -7,28 +7,32 @@ exports.getLogIn =async (req, res)=>{
 }
 
 exports.postLogIn = async (req, res)=>{
-    const username= req.body.username;
-    //const hash = await bcrypt.hash(req.body.password, 10);
+    const username= await req.body.username;
     const password=req.body.password;
-    const [userData] = await Users.getUserByEmail(username);
-    const hash= userData.passwordi;
-    const diqka= await bcrypt.compare(password, hash);
-   
-    const allUsers= await Users.getAllUsers();
-    req.session.user="";
-    const loggedInUser= allUsers.find(c=>{
-        return (c.email===username)&&(diqka)
-    })
-    //console.log(loggedInUser,username, password );
+    try{
+      const [userData] = await Users.getUserByEmail(username);
+      const hash= userData.passwordi;
+      const diqka= await bcrypt.compare(password, hash);
+      const allUsers= await Users.getAllUsers();
+      req.session.user="";
+      const loggedInUser= allUsers.find(c=>{
+          return (c.email===username)&&(diqka)
+      })
+      
+      if(loggedInUser){
+        req.session.user=loggedInUser;
+        req.session.isLoggedIn = true;
+        res.redirect("/");
+      }else{
+        res.render('redirect',{message: "Passworid ose Emaila kan qen gabim"});
+      }
 
-    if(loggedInUser){
-      req.session.user=loggedInUser;
-      req.session.isLoggedIn = true;
-      res.redirect("/");
+     
+    }catch(err){
+      res.render('redirect',{message: "Passworid ose Emaila kan qen gabim"});
     }
-    else{
-      res.send("Gabim shoku e ki njaonon");
-    }
+    
+    
    
 }
 

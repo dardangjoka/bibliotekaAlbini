@@ -35,6 +35,6 @@ include ../includes/navBar.pug
                                     .col-xl-6.col-sm-11.m-1
                                         label(for="bio") Bio
                                         .d-flex.align-items-center
-                                            textarea(style=" row:3; resize:none;" )#bio.form-control
+                                            input(type="text", placeholder=user.bio, value=user.bio)#bio.form-control
                                             button.btn.btn-primary.ms-3 Edit
     include ../includes/footer.pug

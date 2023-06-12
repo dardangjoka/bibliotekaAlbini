@@ -21,7 +21,6 @@ class Users{
     }
 
     static async getAllAdmins(){
-        
         const query = 'SELECT * FROM libraria.userat where privilegji=2;';
         const [results] = await conn.query(query);
         return results;
@@ -33,7 +32,7 @@ class Users{
     }
     static async  getUserByEmail(email){
         const query = 'SELECT * FROM userat WHERE email = ?';
-        const [results] = await conn.query(query, [email]);
+        const [results, field] = await conn.query(query, [email]);
         return results;
     }
 
@@ -51,7 +50,7 @@ class Users{
     static async getAllUsers(){
         try{
             const [row, field] = await  conn.query(`
-            SELECT id, emrin, mbiemri, email, passwordi, privilegji, user_image 
+            SELECT id, emrin, mbiemri, email, passwordi, privilegji, user_image, bio
             FROM userat`)
             return row;
         }
@@ -64,8 +63,14 @@ class Users{
 
 }
 
- Users.getAllAdmins().then(result=>{
-    const [obj] =result;
-    console.log(obj)
- });
+
+// const hello= async ()=>{
+//     const [result]= await Users.getUserByEmail("c@c.c");
+
+//     console.log(result);
+// }
+
+// hello();
+
+
 module.exports = Users;

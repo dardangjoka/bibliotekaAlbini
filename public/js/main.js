@@ -60,3 +60,22 @@ function fshij(id){
 }
 
 
+function edito(id){
+  fetch("http://localhost:3000/book-profile/"+id, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(response => {
+          if (response.ok) {
+           window.location.reload();
+          } else {
+            // Handle error case
+            console.error('Delete request failed');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+}

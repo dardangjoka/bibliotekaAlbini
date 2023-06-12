@@ -20,10 +20,10 @@ block content
                                 td= liber.titulli 
                                 td= liber.autori 
                                 td= liber.zhanri
-                                td(style="max-width:200px !important;")= liber.pershkrimi
-                                td= liber.vitiBotimit
+                                td(style="max-width:200px !important;")= liber.texti
+                                td= liber.viti_botimit
                                 td 
-                                    button.btn.btn-secondary(onclick="edito("+liber.id+")") Edito
+                                    a.btn.btn-secondary(href="/crudiPerLibra/"+liber.id+"") Edito
                                 td 
                                     button#fshij.btn.btn-danger(onclick="fshij("+liber.id+")") Delete
                     br
@@ -40,9 +40,6 @@ block content
                                     tr
                                         td 
                                             .form-group
-                                                label(for="id") Id:
-                                                    input#id.form-control(name="id", type="text")
-                                            .form-group
                                                 label(for="isbn") ISBN:
                                                     input#isbn.form-control(name="isbn", type="text")
                                             .form-group
@@ -57,7 +54,12 @@ block content
                                                     input#autori.form-control(name="autori", type="text")
                                             .form-group 
                                                 label(for="zhanri") Zhanrri:
-                                                    input#zhanri.form-control(name="zhanri", type="text")
+                                                    select.form-select(name="zhanri")
+                                                        option(value="1") Drame
+                                                        option(value="2") Tragjedi
+                                                        option(value="3") Romance
+                                                        option(value="4") Roman
+                                                        option(value="5") Poeme
                                         td
                                             .form-group
                                                 label(for="vitiBotimit") Viti i Botimit:

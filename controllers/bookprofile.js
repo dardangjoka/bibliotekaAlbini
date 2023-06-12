@@ -1,4 +1,5 @@
 const Librat = require('../models/libra');
+const zhaneriMap = require('../models/zhanri');
 
 exports.getBookProfile =async (req, res)=>{
     const id=req.params.id;
@@ -44,25 +45,58 @@ exports.createBook = async (req, res)=>{
     const imgId = 1;
     const pershkrimi = req.body.pershkrimi;
     const zhanri = req.body.zhanri;
-    const libri = new Librat(titulli, parseInt(isbn), autori, parseInt(viti), parseFloat(cmimi), parseInt(zhanri), parseInt(isVisible), parseInt(pdfLink), parseInt(imgId), parseInt(pershkrimi));
+    const libri = new Librat(titulli, parseInt(isbn), autori, parseInt(viti), parseFloat(cmimi), parseInt(zhanri), parseInt(isVisible), parseInt(pdfLink), parseInt(imgId), '1');
 
     try{
-        await libri.createBook();
+        const bookID =await libri.createBook();
+        console.log(bookID.insertId);
+        try{
+           const pershkrimiId= await libri.createPershkrimi(parseInt(bookID), pershkrimi);
+           try{
+            await libri.updataPershkirmiId(parseInt(pershkrimiId.insertId), parseInt(bookID.insertId));
+
+            }catch(errori){
+                console.log("hekqwetuy",errori)
+            }
+        }catch(errori){
+            console.log("hektuy",errori)
+        }
+
+        
         const allBooks= await Librat.getAllBooks();
         await res.render("dashboard/dashboard", {aaa1:  allBooks, errorActive: "none", isAuthenticated: req.session.isLoggedIn});
     }catch(err){
+        console.log(err);
         const allBooks= await Librat.getAllBooks();
         await res.render("dashboard/dashboard", {aaa1:  allBooks, errorActive: "block", err:err, isAuthenticated: req.session.isLoggedIn});
     }
         
 }
 
-
-
 exports.updateAbook = async (req, res)=>{
-    const titulli=req.body.titulli;
-    const autori=req.body.titulli;
-    const zhanri=req.body.titulli;
+    const id= req.body.idja;
+    const titulli= req.body.titulli;
+    const autori= req.body.autori;
+    const viti_botimit= req.body.viti_botimit;
+    const zhaner= req.body.zhaner;
+    const cmimi= req.body.cmimi;
+    const pershkrimi = req.body.pershkrimi;
+    const bookArray= [id, titulli, autori, viti_botimit, cmimi,zhaner, pershkrimi];
+    
+      Librat.updateBooks(bookArray).then(result=>{
+        console.log(result);
+        res.redirect('../dashboard');
+      }).catch(err=>{
+        console.log(err)
+        res.render('redirect', {message: err.sqlState})
+      });
+    
+        
+   
+     
+
+    
+    //35,"hello", "Bini", "4321", 20, 1, "hello3232"
 
 }
 

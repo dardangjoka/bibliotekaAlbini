@@ -1,13 +1,26 @@
-exports.isAuth = (req, res, next)=>{
+exports.isAuth = async (req, res, next)=>{
     console.log("ketu")
     if(!req.session.isLoggedIn){
         if(req.session.user.privilegji==="0" || req.session.user.privilegji==='1'){
-            res.redirect('/');
+            try{
+                await res.render('redirect',{message: "Duhesh me u kan logged in"});
+            }
+            catch(err){
+                console.error(err);
+            }
         }else{
             if(req.session.user.privilegji==2){
-                next();
+                try{
+                    await next();
+                }catch(err){
+                    console.error(err);
+                }
             }
         }
     }
-    next();
+    try{
+        await next();
+    }catch(err){
+        console.error(err);
+    }
 }

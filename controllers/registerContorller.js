@@ -12,12 +12,13 @@ exports.postRegister = async (req, res, next)=>{
     const password = req.body.password;
     const mbiemri = req.body.lastname;
 
-    const user = new User(emri, mbiemri, email, password);
+    const user = new User(emri, mbiemri, email, password,"1", "/img/rr.jpg", "Nuk ka Bio");
     try{
         await user.createUser();
         res.redirect('/');
     }
     catch(err){
+        console.log(err);
         await res.send(err.sqlMessage.split('for')[0]).status(400);
         setTimeout(()=>{
         }, 5000);

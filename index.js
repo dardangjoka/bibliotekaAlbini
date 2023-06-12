@@ -33,13 +33,13 @@ app.use(
       saveUninitialized: false,
     })
   );
+  
 app.use((req, res, next)=>{
   if(!req.session.user){
     req.session.user={
       privilegji: "0"
     }
   }
-    
   next();
 })
 app.use('/register', register);
